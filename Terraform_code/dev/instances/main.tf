@@ -52,7 +52,7 @@ resource "aws_instance" "my_amazon" {
   key_name                    = aws_key_pair.my_key.key_name
   vpc_security_group_ids      = [aws_security_group.my_sg.id]
   associate_public_ip_address = false
-  iam_instance_profile        = data.aws_iam_instance_profile.profile.name
+  iam_instance_profile        = data.aws_iam_instance_profile.lab_profile.name
   user_data                   = file("install.sh")
 
   lifecycle {
@@ -142,7 +142,6 @@ resource "aws_ecr_repository" "mysql_ecr" {
 
 }
 
-data "aws_iam_instance_profile" "profile" {
-  name = "InstanceProfile"
+data "aws_iam_instance_profile" "lab_profile" {
+  name = "LabInstanceProfile"
 }
-
