@@ -126,7 +126,7 @@ resource "aws_eip" "static_eip" {
 }
 
 
-
+# Elastic Container Registry for webapp container image
 resource "aws_ecr_repository" "webapp_ecr" {
   name                 = "webapp"
   image_tag_mutability = "IMMUTABLE"
@@ -138,6 +138,8 @@ resource "aws_ecr_repository" "webapp_ecr" {
 
 }
 
+
+# Elastic Container Registry for sql db container image
 resource "aws_ecr_repository" "mysql_ecr" {
   name                 = "mysql"
   image_tag_mutability = "IMMUTABLE"
@@ -148,6 +150,7 @@ resource "aws_ecr_repository" "mysql_ecr" {
 
 }
 
+# IAM profile
 data "aws_iam_instance_profile" "lab_profile" {
   name = "LabInstanceProfile"
 }
